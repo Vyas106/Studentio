@@ -1174,7 +1174,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MessageCircle } from 'lucide-react';
 import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import Image from "next/image";
+// import Image from "next/image";
 
 
 // Types

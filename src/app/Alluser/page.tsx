@@ -449,7 +449,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '@/lib/firebase';
-import { collection, getDocs, query, limit, where, doc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, query, limit } from 'firebase/firestore';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

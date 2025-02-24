@@ -1720,7 +1720,7 @@ export default function ProjectDetailPage() {
     </div>
 
     
-    <Space />
+    <Space   />
       <Navbar />
   </div>
 ))}
