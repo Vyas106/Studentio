@@ -133,7 +133,7 @@ useEffect(() => {
               </div>
               
               <button className="w-full py-3 px-4 rounded-xl border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-colors font-medium font-inter">
-                Sign up with email
+                Login As teacher
               </button>
             </div>
             
