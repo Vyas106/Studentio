@@ -7,7 +7,7 @@
   import { Badge } from '@/components/ui/badge';
   import { MessageButton } from './MessageButton';
   import { useFollow } from '@/hooks/useFollow';
-  import { FiUser, FiMapPin, FiBook } from 'react-icons/fi';
+  import {  FiMapPin, FiBook } from 'react-icons/fi';
   
   interface UserCardProps {
     user: UserProfile;

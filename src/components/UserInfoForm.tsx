@@ -783,8 +783,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { motion } from "framer-motion";
 import { 
   AtSign, Briefcase, BookOpen, User, Hash, FileText, Github, 
-  Linkedin, Twitter, Camera, ArrowLeft, ArrowRight, Check, Image as ImageIcon,
-  CheckCircle, Pencil, Plus, X, MapPin, GraduationCap
+  Linkedin, Twitter, Camera, ArrowLeft, ArrowRight, Check,
+  CheckCircle, Plus, X,  GraduationCap
 } from "lucide-react";
 
 export default function UserInfoForm() {
@@ -869,10 +869,10 @@ export default function UserInfoForm() {
     }
   };
 
-  const handleSkillsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const skillsArray = e.target.value.split(',').map(skill => skill.trim()).filter(Boolean);
-    setForm(prev => ({ ...prev, skills: skillsArray }));
-  };
+  // const handleSkillsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const skillsArray = e.target.value.split(',').map(skill => skill.trim()).filter(Boolean);
+  //   setForm(prev => ({ ...prev, skills: skillsArray }));
+  // };
 
   const addSkill = (skill: string) => {
     if (skill && !form.skills?.includes(skill)) {
@@ -1094,9 +1094,9 @@ export default function UserInfoForm() {
                       </AvatarFallback>
                     </Avatar>
                     
-                    <label htmlFor="photo-upload" className="absolute bottom-0 right-0 bg-blue-500 text-white p-1.5 rounded-full cursor-pointer shadow-md hover:bg-blue-600 transition-colors">
+                    {/* <label htmlFor="photo-upload" className="absolute bottom-0 right-0 bg-blue-500 text-white p-1.5 rounded-full cursor-pointer shadow-md hover:bg-blue-600 transition-colors">
                       <Camera className="h-4 w-4" />
-                    </label>
+                    </label> */}
                     
                     <Input
                       id="photo-upload"

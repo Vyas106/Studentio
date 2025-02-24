@@ -476,7 +476,7 @@ const isDesktop = useMediaQuery('(min-width: 768px)');
     if (user) {
       router.push("/profile");
     }
-  }, [user]);
+  }, [user, router]);
 
 useEffect(() => {
   setIsVisible(true);
@@ -582,20 +582,18 @@ useEffect(() => {
     </div>
   );
 }
-
-// Custom hook for media queries
-export const useMediaQuery = ({query}: any) => {
-  const [matches, setMatches] = useState(false);
+export const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
+    setMatches(media.matches);
+
     const listener = () => setMatches(media.matches);
-    window.addEventListener('resize', listener);
-    return () => window.removeEventListener('resize', listener);
-  }, [matches, query]);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
 
   return matches;
-}
+};

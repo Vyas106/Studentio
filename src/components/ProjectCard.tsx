@@ -522,6 +522,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Image from "next/image";
+
 import {
   Dialog,
   DialogContent,
@@ -682,11 +684,13 @@ const handleJoinRequest = async () => {
       <Link href={`/project/${project.id}`}>
         <div className="relative h-40 w-full">
           {project.imageUrl ? (
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              className="h-full w-full object-cover rounded-t-lg"
-            />
+           <Image
+           src={project.imageUrl}
+           alt={project.title}
+           width={500} // Set appropriate width
+           height={300} // Set appropriate height
+           className="h-full w-full object-cover rounded-t-lg"
+         />
           ) : (
             <div className="h-full w-full bg-gray-200 flex items-center justify-center rounded-t-lg">
               <FolderIcon className="h-12 w-12 text-gray-400" />
@@ -766,7 +770,7 @@ const handleJoinRequest = async () => {
           <DialogHeader>
             <DialogTitle>Join Project</DialogTitle>
             <DialogDescription>
-              Send a message to the project owner explaining why you'd like to join.
+              Send a message to the project owner explaining why you&apos;d like to join.
             </DialogDescription>
           </DialogHeader>
           <div className="py-4">

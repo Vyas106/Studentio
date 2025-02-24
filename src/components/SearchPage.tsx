@@ -316,11 +316,10 @@ import { UserStats } from "./UserStats";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FiSearch, FiFilter, FiRefreshCw, FiSliders, FiX } from "react-icons/fi";
 import { UserProfile } from "../../types/user";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; 
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState("");

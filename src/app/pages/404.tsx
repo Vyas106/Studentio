@@ -23,7 +23,7 @@ export default function Custom404() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
-        Oops! The page you're looking for doesn't exist.
+        Oops&apos; The page you&apos;re looking for doesn&apos;t exist.
       </motion.p>
 
       {/* Back to Home Button */}

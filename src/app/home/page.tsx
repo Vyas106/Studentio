@@ -6,12 +6,11 @@ import { useRouter } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { 
-  Bell, 
   CalendarIcon, 
   Users, 
   MessageSquare,
-  Home as HomeIcon,
-  Settings,
+  
+
   Search,
   SearchIcon,
   BotMessageSquare
@@ -30,8 +29,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Navbar from "@/components/Navbar";
 import LodingPage from "@/components/LodingPage";
-import Space from "@/components/space";
-import YourJoinedProjects from "@/components/YourJoinedProjects";
+// import Space from "@/components/space";
+// import YourJoinedProjects from "@/components/YourJoinedProjects";
 import { NotificationBell } from "@/components/NotificationBell";
 import Link from "next/link";
 
@@ -77,6 +76,7 @@ const Home: React.FC = () => {
     return <LodingPage />;
   }
 
+  // Home
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -127,7 +127,7 @@ const Home: React.FC = () => {
 
       <div className="pt-20 pb-16 px-4 max-w-7xl mx-auto">
         {/* User Profile Card */}
-        <Card className="mb-6 border-none border-none shadow-none">
+        <Card className="mb-6 border-none  shadow-none">
           <CardContent className="pt-6">
             <div className="flex items-center gap-4">
               <Avatar className="h-16 w-16 border">
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
           </Link>
 
                 
-          <Link href="/AiChatBot">
+          <Link href="/ChatList">
             <Card className="bg-gray-50 transition-colors cursor-pointer border-none shadow-none">
               <CardContent className="p-4 flex flex-col items-center justify-center">
                 <SearchIcon className="h-6 w-6 text-primary mb-2" />
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
             </Card>
           </Link>
 
-          <Link href="/ChatList">
+          <Link href="/AiChatBot">
             <Card className="bg-gray-50 transition-colors cursor-pointer border-none shadow-none">
               <CardContent className="p-4 flex flex-col items-center justify-center">
                 <BotMessageSquare className="h-6 w-6 text-primary mb-2" />
@@ -195,7 +195,7 @@ const Home: React.FC = () => {
             <CardTitle>Your Projects</CardTitle>
           </CardHeader>
           <CardContent>
-            <YourJoinedProjects userId={user?.uid || ""} />
+            {/* <YourJoinedProjects userId={user?.uid || ""} /> */}
           </CardContent>
         </Card>
       </div>

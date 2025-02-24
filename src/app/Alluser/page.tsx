@@ -453,7 +453,7 @@ import { collection, getDocs, query, limit, where, doc, setDoc } from 'firebase/
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetTrigger } from '@/components/ui/sheet';
 import { Search, ChevronRight, Filter, X } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
@@ -484,13 +484,20 @@ interface FilterOptions {
   department: string;
 }
 
+interface CurrentUser {
+  uid: string;
+  displayName: string;
+  email: string;
+  photoURL: string;
+}
+
 const UsersList = () => {
   const router = useNavigationRouter();
   const [users, setUsers] = useState<UserInfo[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<UserInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<CurrentUser | undefined>();
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<FilterOptions>({
     college: '',
@@ -511,7 +518,12 @@ const UsersList = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setCurrentUser(user);
+        setCurrentUser({
+          uid: user.uid,
+          displayName: user.displayName || "Unknown User",
+          email: user.email || "No Email",
+          photoURL: user.photoURL || "default-avatar-url",
+        });
       }
     });
     return () => unsubscribe();
@@ -580,66 +592,66 @@ const UsersList = () => {
     setFilteredUsers(filtered);
   }, [searchQuery, filters, users]);
 
-  const handleStartChat = async (targetUser: UserInfo) => {
-    if (!currentUser || !targetUser) return;
+  // const handleStartChat = async (targetUser: UserInfo) => {
+  //   if (!currentUser || !targetUser) return;
 
-    try {
-      // Check for existing chat room
-      const chatRoomsRef = collection(db, 'chatRooms');
-      const q = query(
-        chatRoomsRef,
-        where('participants', 'array-contains', currentUser.uid)
-      );
+  //   try {
+  //     // Check for existing chat room
+  //     const chatRoomsRef = collection(db, 'chatRooms');
+  //     const q = query(
+  //       chatRoomsRef,
+  //       where('participants', 'array-contains', currentUser.uid)
+  //     );
       
-      const querySnapshot = await getDocs(q);
-      let existingChatRoom = null;
+  //     const querySnapshot = await getDocs(q);
+  //     let existingChatRoom = null;
 
-      querySnapshot.forEach((doc) => {
-        const roomData = doc.data();
-        if (roomData.participants.includes(targetUser.id)) {
-          existingChatRoom = { id: doc.id, ...roomData };
-        }
-      });
+  //     querySnapshot.forEach((doc) => {
+  //       const roomData = doc.data();
+  //       if (roomData.participants.includes(targetUser.id)) {
+  //         existingChatRoom = { id: doc.id, ...roomData };
+  //       }
+  //     });
 
-      if (existingChatRoom) {
-        // router.push(`/chatroom/${existingChatRoom.id}`);
-        router.push(`/chatroom/${(existingChatRoom as { id: string }).id}`);
+  //     if (existingChatRoom) {
+  //       // router.push(`/chatroom/${existingChatRoom.id}`);
+  //       router.push(`/chatroom/${(existingChatRoom as { id: string }).id}`);
 
-      } else {
-        // Create new chat room
-        const newChatRoomRef = doc(collection(db, 'chatRooms'));
-        const chatRoomData = {
-          id: newChatRoomRef.id,
-          participants: [currentUser.uid, targetUser.id],
-          participantsInfo: [
-            {
-              id: currentUser.uid,
-              name: currentUser.displayName,
-              photoURL: currentUser.photoURL
-            },
-            {
-              id: targetUser.id,
-              name: targetUser.name,
-              photoURL: targetUser.photoURL
-            }
-          ],
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
-          lastMessage: null,
-          unreadCount: 0
-        };
+  //     } else {
+  //       // Create new chat room
+  //       const newChatRoomRef = doc(collection(db, 'chatRooms'));
+  //       const chatRoomData = {
+  //         id: newChatRoomRef.id,
+  //         participants: [currentUser.uid, targetUser.id],
+  //         participantsInfo: [
+  //           {
+  //             id: currentUser.uid,
+  //             name: currentUser.displayName,
+  //             photoURL: currentUser.photoURL
+  //           },
+  //           {
+  //             id: targetUser.id,
+  //             name: targetUser.name,
+  //             photoURL: targetUser.photoURL
+  //           }
+  //         ],
+  //         createdAt: Date.now(),
+  //         updatedAt: Date.now(),
+  //         lastMessage: null,
+  //         unreadCount: 0
+  //       };
 
-        await setDoc(newChatRoomRef, chatRoomData);
-        router.push(`/chatroom/${newChatRoomRef.id}`);
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to start chat",
-        variant: "destructive",
-      });
-    }
-  };
+  //       await setDoc(newChatRoomRef, chatRoomData);
+  //       router.push(`/chatroom/${newChatRoomRef.id}`);
+  //     }
+  //   } catch (error) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Failed to start chat",
+  //       variant: "destructive",
+  //     });
+  //   }
+  // };
 
   const clearFilters = () => {
     setFilters({

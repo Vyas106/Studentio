@@ -14,8 +14,8 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '../../../utils/hooks/useAuth';
-import { Loader2, Filter, Search, RefreshCw } from 'lucide-react';
-import type { Project, ProjectStatus } from '../../../types/project';
+import { Loader, Search, RefreshCw, Loader2 } from 'lucide-react';
+import type { Project } from '../../../types/project';
 import Navbar from '@/components/Navbar';
 import Space from '@/components/space';
 import { toast } from '@/hooks/use-toast';

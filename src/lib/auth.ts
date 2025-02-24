@@ -1,6 +1,5 @@
 // lib/auth.ts
-import { auth } from '@/lib/firebase';
-import { User, onAuthStateChanged, signOut } from 'firebase/auth';
+import { User } from 'firebase/auth';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

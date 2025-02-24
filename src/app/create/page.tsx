@@ -1,10 +1,19 @@
 "use client";   
 
 import Link from 'next/link';
-import { MessageSquare, Image, FileText, Twitter, Calendar, BookOpen, PenTool, ArrowUpRight, Sparkles, Globe } from 'lucide-react';
+import { MessageSquare, FileText, Twitter, Calendar, BookOpen, PenTool, ArrowUpRight, Globe } from 'lucide-react';
 import { useState } from 'react';
 
-const DashboardCard = ({ href, icon: Icon, title, description, gradient, delay } : any) => {
+interface DashboardCardProps {
+  href: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>; // Allowing size and className as props
+  title: string;
+  description: string;
+  gradient?: string; // Optional prop
+  delay?: number; // Optional prop
+}
+
+const DashboardCard: React.FC<DashboardCardProps> = ({ href, icon: Icon, title, description, delay }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

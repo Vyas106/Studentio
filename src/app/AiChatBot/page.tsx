@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Send, Image, Paperclip, Bot, User, RefreshCw, Menu } from 'lucide-react';
+import { Send, Paperclip, Bot, User, RefreshCw, Menu } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
+import Image from "next/image";
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -145,12 +145,16 @@ export default function ChatPage() {
                   </div>
                   
                   {message.attachments?.map((attachment, i) => (
-                    <img 
-                      key={i}
-                      src={attachment}
-                      alt="Attached image"
-                      className="max-w-xs rounded-xl"
-                    />
+                   <Image
+                   key={i}
+                   src={attachment}
+  alt="Attached image"
+  width={200} // Adjust as needed
+  height={200} // Adjust as needed
+
+                  
+                   className="max-w-xs rounded-xl"
+                 />
                   ))}
                   
                   <span className="text-xs text-neutral-400">

@@ -6,10 +6,9 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/firebase";
 import { UserInfo } from "@/components/profilePage/UserInfo";
 import { EditProfile } from "@/components/profilePage/EditUserInfo";
-import { CreateContent } from "@/components/profilePage/CreateContent";
+// import { CreateContent } from "@/components/profilePage/CreateContent";
 import { useProfile } from "@/hooks/use-profile";
 import LoadingPage from "@/components/LodingPage";
-import { UserProfile } from "../../types/user";
 import { useState } from "react";
 import Space from "./space";
 import Navbar from "./Navbar";
@@ -55,19 +54,19 @@ export default function ProfilePage() {
           onEdit={() => setIsEditing(true)}
         />
       )}
-      <CreateContent
+      {/* <CreateContent
         isOwnProfile={true}
         userId={user.uid}
         posts={posts}
         projects={projects}
         notes={notes}
         onPostCreate={handlePostCreate}
-        onProjectCreate={handleProjectCreate}
+        // onProjectCreate={handleProjectCreate}
         onNoteCreate={handleNoteCreate}
         onPostDelete={handlePostDelete}
-        onProjectDelete={handleProjectDelete}
+        // onProjectDelete={handleProjectDelete}
         onNoteDelete={handleNoteDelete}
-      />
+      /> */}
 
 <Space />
 <Navbar  />

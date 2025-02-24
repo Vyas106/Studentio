@@ -1174,6 +1174,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MessageCircle } from 'lucide-react';
 import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import Image from "next/image";
+
 
 // Types
 interface Message {
@@ -1413,15 +1415,21 @@ const ChatList: React.FC = () => {
             >
               <CardContent className="p-3">
                 <div className="flex items-center space-x-3">
-                  <img
-                    // src={user.avatarUrl || '/api/placeholder/40/40'}
+                  {/* <Image
+                    key={i}
+                    src={user.avatarUrl || 'user'}
                     alt={otherUser?.name || 'User'}
+                  
+                  width={200} // Adjust as needed
+                  height={200} // Adjust as needed
+                    // src={user.avatarUrl || '/api/placeholder/40/40'}
+                    // alt={otherUser?.name || 'User'}
                     className="h-10 w-10 rounded-full object-cover bg-gray-100"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      // target.src = '/api/placeholder/40/40';
-                    }}
-                  />
+                    // onError={(e) => {
+                    //   // const target = e.target as HTMLImageElement;
+                    //   // target.src = '/api/placeholder/40/40';
+                    // }}
+                  /> */}
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm text-gray-900 truncate">
                       {otherUser?.name || user.displayName}

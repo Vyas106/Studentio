@@ -2,7 +2,7 @@
 "use client";
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { PlusCircle, X, Upload, Loader2, Tags, Calendar, FolderIcon } from 'lucide-react';
+import { PlusCircle, X, Upload, Loader2, Tags } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -13,9 +13,9 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { toast, useToast } from '@/hooks/use-toast';
-import { addDoc, collection, deleteDoc, doc, setDoc } from 'firebase/firestore';
-import { db, auth, User } from '@/lib/firebase';
+import {  useToast } from '@/hooks/use-toast';
+import { addDoc, collection } from 'firebase/firestore';
+import { db, auth,} from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import {
   Form,

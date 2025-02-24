@@ -1305,6 +1305,7 @@ import { useAuth } from '../../../utils/hooks/useAuth';
 import type { Post, UserProfile } from './../../../types/user';
 import Space from '@/components/space';
 import Navbar from '@/components/Navbar';
+import Image from "next/image";
 
 const POSTS_PER_PAGE = 9;
 const PREDEFINED_TAGS = ['vishal', 'vyas', 'xhhxs', 'webdev', 'me', 'ij', 'fd'];
@@ -1599,14 +1600,16 @@ export default function ExplorePage() {
             </div>
 
             {post.imageUrl && (
-              <div className="relative h-48 mb-4">
-                <img
-                  src={post.imageUrl}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                />
-              </div>
-            )}
+  <div className="relative h-48 mb-4">
+    <Image
+      src={post.imageUrl}
+      alt="Post Image"
+      layout="fill"
+      objectFit="cover"
+      className="rounded-lg"
+    />
+  </div>
+)}
 
             <p className="text-gray-700 mb-4 line-clamp-3">{post.content}</p>
 

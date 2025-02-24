@@ -16,8 +16,8 @@ import {
   Users,
   UserPlus,
   UserMinus,
-  MapPin
 } from "lucide-react";
+import Image from 'next/image';
 
 interface UserInfoProps {
   user: UserProfile;
@@ -56,9 +56,10 @@ export const UserInfo = ({ user, isOwnProfile, onLogout, onEdit }: UserInfoProps
           
 
           {user.photoURL ? (
-                  <img 
+                  <Image
                     src={user.photoURL} 
-                    alt={user.name}
+                    alt={user.name || ""}
+
                     className="w-full h-full object-cover"
                   />
                 ) : (

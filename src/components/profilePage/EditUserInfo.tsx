@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, Globe, Plus, X } from "lucide-react";
+import { Github, Linkedin, Twitter, Globe } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 
 interface EditProfileProps {

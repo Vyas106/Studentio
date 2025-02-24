@@ -10,9 +10,7 @@ import {
   getDocs, 
   onSnapshot, 
   doc, 
-  updateDoc, 
   getDoc, 
-  addDoc,
   writeBatch,
   serverTimestamp
 } from 'firebase/firestore';
@@ -44,6 +42,11 @@ const NOTIFICATION_ICONS: Record<NotificationType, React.ReactNode> = {
   message: <MessageSquare className="h-5 w-5 text-purple-500" />,
   alert: <AlertCircle className="h-5 w-5 text-yellow-500" />
 };
+
+interface Member {
+  userId: string; // Adjust type accordingly
+}
+
 
 export default function NotificationsPage() {
   const { user } = useAuth();
@@ -141,7 +144,9 @@ export default function NotificationsPage() {
         const currentMembers = projectData.members || [];
 
         // Check if not already a member
-        if (!currentMembers.some((member: any) => member.userId === notification.from.id)) {
+        // if (!currentMembers.some((member) => member.userId === notification.from.id)) {
+          if (!currentMembers.some((member: Member) => member.userId === notification.from.id)) {
+
           const newMember = {
             userId: notification.from.id,
             role: 'member',

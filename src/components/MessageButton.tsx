@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
-import { addDoc, collection, db } from '@/lib/firebase';
+import { addDoc, auth, collection, db } from '@/lib/firebase';
 import { serverTimestamp } from 'firebase/firestore';
 import { toast } from '@/hooks/use-toast';
 

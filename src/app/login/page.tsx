@@ -43,12 +43,6 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   
-  
-  // import { useEffect } from "react";
-  // import GoogleLoginButton from "@/components/GoogleLoginButton";
-
-// export default function LoginPage() {
-  
 
 
 const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +54,8 @@ const isDesktop = useMediaQuery('(min-width: 768px)');
     if (user) {
       router.push("/profile");
     }
-  }, [user]);
+  }, [user, router]);
+  
 
 useEffect(() => {
   setIsVisible(true);
@@ -148,23 +143,6 @@ useEffect(() => {
           </motion.div>
         </div>
         
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="mt-10 md:mt-16 text-center"
-        >
-          <p className="text-sm md:text-base text-gray-600 font-inter">
-            Already used by students at <span className="font-medium">MIT</span>, <span className="font-medium">Stanford</span>, and <span className="font-medium">200+</span> universities worldwide
-          </p>
-          
-          <div className="mt-6 flex flex-wrap justify-center gap-8">
-            <img src="/api/placeholder/80/30" alt="University logo" className="h-6 md:h-8 opacity-70" />
-            <img src="/api/placeholder/80/30" alt="University logo" className="h-6 md:h-8 opacity-70" />
-            <img src="/api/placeholder/80/30" alt="University logo" className="h-6 md:h-8 opacity-70" />
-            <img src="/api/placeholder/80/30" alt="University logo" className="h-6 md:h-8 opacity-70" />
-          </div>
-        </motion.div> */}
       </main>
       
       {isDesktop && (
@@ -184,18 +162,18 @@ useEffect(() => {
 }
 
 // Custom hook for media queries
-export const useMediaQuery = ({query}: any) => {
-  const [matches, setMatches] = useState(false);
+export const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
+    setMatches(media.matches);
+
     const listener = () => setMatches(media.matches);
-    window.addEventListener('resize', listener);
-    return () => window.removeEventListener('resize', listener);
-  }, [matches, query]);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
 
   return matches;
-}
+};

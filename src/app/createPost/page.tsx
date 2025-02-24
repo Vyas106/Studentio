@@ -207,7 +207,7 @@ import { AddPost } from '@/components/AddPost';
 
 export default function CreatePostPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('post');
+  const [, setActiveTab] = useState('post');
   const [userId] = useState('user123'); // Replace with actual user ID from your auth system
 
   const handlePostCreated = () => {
@@ -248,7 +248,7 @@ export default function CreatePostPage() {
               <CardContent className="p-6">
                 <AddPost
                   userId={userId}
-                  onPostCreated={(post) => {
+                  onPostCreated={() => {
                     handlePostCreated();
                   }}
                 />

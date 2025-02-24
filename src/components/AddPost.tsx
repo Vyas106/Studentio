@@ -1678,7 +1678,6 @@ import {
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
 } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
 import { db } from '@/lib/firebase';
@@ -1779,7 +1778,7 @@ export function AddPost({ onPostCreated, userId }: AddPostProps) {
         title: "Image too large",
         description: `Image size (${fileSize}) exceeds 2MB limit. Please choose a smaller image.`,
         variant: "destructive",
-        icon: <AlertCircle className="h-4 w-4" />
+        // icon: <AlertCircle className="h-4 w-4" />
       });
       return;
     }
@@ -1787,7 +1786,7 @@ export function AddPost({ onPostCreated, userId }: AddPostProps) {
     toast({
       title: "Image added",
       description: `Image size: ${formatFileSize(file.size)}`,
-      icon: <Camera className="h-4 w-4" />
+      // icon: <Camera className="h-4 w-4" />
     });
   };
 
@@ -1820,7 +1819,14 @@ export function AddPost({ onPostCreated, userId }: AddPostProps) {
       };
 
       const docRef = await addDoc(collection(db, 'posts'), postData);
-      onPostCreated({ ...postData, id: docRef.id });
+      onPostCreated({ 
+        ...postData, 
+        id: docRef.id,
+        comments: [], // Initialize as empty array if needed
+        shares: 0, // Default value if applicable
+        visibility: 'public', // Provide a valid default value
+        updatedAt: Date.now() // Include updatedAt timestamp
+      });
       
       setContent('');
       setImage(null);
@@ -1830,7 +1836,7 @@ export function AddPost({ onPostCreated, userId }: AddPostProps) {
       toast({ 
         title: "Success", 
         description: "Your post has been shared!",
-        icon: <Sparkles className="h-4 w-4" />
+        // icon: <Sparkles className="h-4 w-4" />
       });
     } catch (error) {
       toast({ 

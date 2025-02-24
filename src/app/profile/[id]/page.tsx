@@ -361,7 +361,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Separator } from '@/components/ui/separator';
 import { getInitials } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
 import { FiEdit3, FiMail, FiMapPin, FiGlobe, FiLinkedin, FiGithub, FiTwitter } from 'react-icons/fi';
@@ -949,7 +948,7 @@ interface EditProfileDialogProps {
 
 export const EditProfileDialog = ({ profile, onSave }: EditProfileDialogProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState(profile);
+  const [formData,] = useState(profile);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

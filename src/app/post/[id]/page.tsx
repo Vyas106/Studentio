@@ -14,6 +14,8 @@ import { db } from '@/lib/firebase';
 import { useAuth } from '../../../../utils/hooks/useAuth';
 import type { Post, Comment, UserProfile } from '../../../../types/user';
 import Link from 'next/link';
+import Image from "next/image";
+
 
 export default function PostPage() {
   const { id } = useParams();
@@ -134,39 +136,39 @@ export default function PostPage() {
     }
   };
 
-  const handleShare = async () => {
-    if (!post) return;
+  // const handleShare = async () => {
+  //   if (!post) return;
 
-    try {
-      await navigator.clipboard.writeText(window.location.href);
+  //   try {
+  //     await navigator.clipboard.writeText(window.location.href);
       
-      const postRef = doc(db, 'posts', post.id);
-      await updateDoc(postRef, {
-        shares: increment(1)
-      });
+  //     const postRef = doc(db, 'posts', post.id);
+  //     await updateDoc(postRef, {
+  //       shares: increment(1)
+  //     });
 
-      setPost(prev => {
-        if (!prev) return null;
-        return {
-          ...prev,
-          shares: (prev.shares || 0) + 1
-        };
-      });
+  //     setPost(prev => {
+  //       if (!prev) return null;
+  //       return {
+  //         ...prev,
+  //         shares: (prev.shares || 0) + 1
+  //       };
+  //     });
 
-      toast({
-        title: "Link copied",
-        description: "Post link copied to clipboard",
-        variant: "default"
-      });
-    } catch (error) {
-      console.error('Error sharing post:', error);
-      toast({
-        title: "Error",
-        description: "Failed to share post. Please try again.",
-        variant: "destructive"
-      });
-    }
-  };
+  //     toast({
+  //       title: "Link copied",
+  //       description: "Post link copied to clipboard",
+  //       variant: "default"
+  //     });
+  //   } catch (error) {
+  //     console.error('Error sharing post:', error);
+  //     toast({
+  //       title: "Error",
+  //       description: "Failed to share post. Please try again.",
+  //       variant: "destructive"
+  //     });
+  //   }
+  // };
 
   const handleComment = async () => {
     if (!user || !post || !commentText.trim()) return;
@@ -220,7 +222,7 @@ export default function PostPage() {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Post not found</h1>
-        <p className="text-gray-600 mb-4">The post you're looking for doesn't exist or has been removed.</p>
+        <p className="text-gray-600 mb-4">The post you&apos;re looking for doesn&apos;t exist or has been removed.</p>
         <Link href="/explore">
           <Button>
             <FiArrowLeft className="mr-2" />
@@ -264,11 +266,12 @@ export default function PostPage() {
 
             {post.imageUrl && (
               <div className="relative h-96 mb-6">
-                <img
-                  src={post.imageUrl}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                />
+            <Image
+  src={post.imageUrl}
+  alt="Post image"
+  fill
+  className="object-cover rounded-lg"
+/>
               </div>
             )}
 
