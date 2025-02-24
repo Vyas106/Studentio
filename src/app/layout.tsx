@@ -1,22 +1,28 @@
-
 // app/layout.tsx
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
+import { AuthProvider } from "@/context/AuthProvider";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
-children,
+  children,
 }: {
-children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-return (
-<html lang="en">
-<body className={inter.className}>
-{children}
-<Toaster />
-</body>
-</html>
-);
+  return (
+    <html lang="en">
+      <body>
+        {/* <AuthProvider> */}
+
+        
+        <AuthProvider>{children}</AuthProvider>
+          <Toaster />
+          {/* <Navbar /> */}
+
+        {/* </AuthProvider> */}
+      </body>
+    </html>
+  );
 }
