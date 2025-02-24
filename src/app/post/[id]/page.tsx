@@ -15,6 +15,8 @@ import { useAuth } from '../../../../utils/hooks/useAuth';
 import type { Post, Comment, UserProfile } from '../../../../types/user';
 import Link from 'next/link';
 import Image from "next/image";
+import Navbar from '@/components/Navbar';
+import Space from '@/components/space';
 
 
 export default function PostPage() {
@@ -376,6 +378,10 @@ export default function PostPage() {
           </CardContent>
         </Card>
       </div>
+
+      
+      <Space />
+      <Navbar />
     </div>
   );
 }

@@ -30,6 +30,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { uploadToCloudinary } from '../../../utils/cloudinary';
+import Space from '@/components/space';
+import Navbar from '@/components/Navbar';
 
 // Enhanced schema with new fields
 const projectSchema = z.object({
@@ -516,6 +518,10 @@ export default function CreateProject() {
           </form>
         </Form>
       </CardContent>
+
+      
+      <Space />
+      <Navbar />
     </Card>
   );
 }

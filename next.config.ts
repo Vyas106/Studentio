@@ -1,8 +1,8 @@
-import type { NextConfig } from "next";
+import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["your-image-domain.com"], // Add allowed image domains
+    domains: ['res.cloudinary.com'],
   },
 };
 

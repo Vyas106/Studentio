@@ -1348,6 +1348,8 @@ import {
   FolderIcon,
   Info,
 } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Space from '@/components/space';
 
 export default function ProjectDetailPage() {
   const { id } = useParams();
@@ -1716,6 +1718,10 @@ export default function ProjectDetailPage() {
         </Badge>
       )}
     </div>
+
+    
+    <Space />
+      <Navbar />
   </div>
 ))}
               </div>

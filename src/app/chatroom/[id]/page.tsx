@@ -920,6 +920,8 @@ import { Send, ImageIcon, Paperclip, ArrowLeft, Download } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import Space from '@/components/space';
+import Navbar from '@/components/Navbar';
 
 interface Message {
   id: string;
@@ -1253,8 +1255,8 @@ export default function ChatRoomPage() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto mt-8 px-4">
-      <Card className="h-[800px] flex flex-col">
+    <div className="max-w-4xl mx-auto mt-8 ">
+      <Card className="h-[800px] flex flex-col border-none shadow-none">
         <CardHeader className="border-b py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -1418,6 +1420,9 @@ export default function ChatRoomPage() {
           </div>
         </CardFooter>
       </Card>
+
+      <Space />
+      <Navbar />
     </div>
   );
 }

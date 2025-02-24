@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { MessageSquare, FileText, Twitter, Calendar, BookOpen, PenTool, ArrowUpRight, Globe } from 'lucide-react';
 import { useState } from 'react';
+import Space from '@/components/space';
+import Navbar from '@/components/Navbar';
 
 interface DashboardCardProps {
   href: string;
@@ -135,6 +137,9 @@ const Page = () => {
           delay={600}
         />
       </div>
+
+      <Space />
+      <Navbar />
     </div>
   );
 };

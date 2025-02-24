@@ -365,6 +365,8 @@ import { getInitials } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
 import { FiEdit3, FiMail, FiMapPin, FiGlobe, FiLinkedin, FiGithub, FiTwitter } from 'react-icons/fi';
 import { FaMessage } from "react-icons/fa6";
+import Navbar from '@/components/Navbar';
+import Space from '@/components/space';
 
 
 interface Experience {
@@ -936,6 +938,9 @@ export default function ProfilePage() {
           </Card>
         </TabsContent>
       </Tabs>
+      
+      <Space />
+      <Navbar />
     </div>
   );
 }
@@ -974,7 +979,7 @@ export const EditProfileDialog = ({ profile, onSave }: EditProfileDialogProps) =
           <DialogTitle>Edit Profile</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Add form fields here */}
+         
         </form>
       </DialogContent>
     </Dialog>
