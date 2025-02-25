@@ -139,6 +139,88 @@ export const colleges = [
 
 
 
+
+// The Maharaja Sayajirao University of Baroda (MSU), Vadodara
+"The Maharaja Sayajirao University of Baroda (MSU), Vadodara",
+"MSU - Faculty of Technology and Engineering",
+"MSU - Faculty of Science",
+"MSU - Faculty of Commerce",
+"MSU - Faculty of Management Studies",
+"MSU - Faculty of Fine Arts",
+"MSU - Faculty of Medicine",
+"MSU - Faculty of Pharmacy",
+"MSU - Faculty of Law",
+"MSU - Faculty of Education and Psychology",
+"MSU - Faculty of Social Work",
+"MSU - Faculty of Performing Arts",
+"MSU - Faculty of Journalism and Communication",
+"MSU - Faculty of Family and Community Sciences",
+"MSU - Faculty of Arts",
+"MSU - Faculty of Sanskrit, Pali & Prakrit",
+"MSU - Faculty of Design",
+
+
+
+
+// Nirma University, Ahmedabad
+"Nirma University, Ahmedabad",
+"Nirma University - Institute of Technology",
+"Nirma University - Institute of Management",
+"Nirma University - Institute of Pharmacy",
+"Nirma University - Institute of Law",
+"Nirma University - Institute of Science",
+"Nirma University - Institute of Architecture & Planning",
+"Nirma University - Department of Computer Science & Engineering",
+"Nirma University - Department of Information Technology",
+"Nirma University - Department of Civil Engineering",
+"Nirma University - Department of Mechanical Engineering",
+"Nirma University - Department of Electrical Engineering",
+"Nirma University - Department of Electronics & Communication Engineering",
+"Nirma University - Department of Instrumentation & Control Engineering",
+"Nirma University - Department of Chemical Engineering",
+"Nirma University - Department of Design",
+"Nirma University - Department of Mathematics & Humanities",
+
+
+// Dharmsinh Desai University (DDU), Nadiad
+"Dharmsinh Desai University (DDU), Nadiad",
+"DDU - Faculty of Technology",
+"DDU - Faculty of Management",
+"DDU - Faculty of Pharmacy",
+"DDU - Faculty of Dental Science",
+"DDU - Faculty of Medical Science",
+"DDU - Faculty of Applied Sciences",
+"DDU - College of Physiotherapy",
+"DDU - Department of Computer Engineering",
+"DDU - Department of Information Technology",
+"DDU - Department of Civil Engineering",
+"DDU - Department of Mechanical Engineering",
+"DDU - Department of Electrical Engineering",
+"DDU - Department of Electronics & Communication Engineering",
+"DDU - Department of Chemical Engineering",
+
+
+
+
+// L.D. College of Engineering (LDCE), Ahmedabad
+"L.D. College of Engineering (LDCE), Ahmedabad",
+"LDCE - Department of Computer Engineering",
+"LDCE - Department of Information Technology",
+"LDCE - Department of Civil Engineering",
+"LDCE - Department of Mechanical Engineering",
+"LDCE - Department of Electrical Engineering",
+"LDCE - Department of Electronics & Communication Engineering",
+"LDCE - Department of Instrumentation & Control Engineering",
+"LDCE - Department of Chemical Engineering",
+"LDCE - Department of Rubber Technology",
+"LDCE - Department of Textile Technology",
+"LDCE - Department of Automobile Engineering",
+"LDCE - Department of Environmental Engineering",
+"LDCE - Department of Biomedical Engineering",
+"LDCE - Department of Applied Sciences & Humanities",
+
+
+
   // Sardar Vallabhbhai National Institute of Technology
   "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
   "SVNIT - Department of Civil Engineering",
