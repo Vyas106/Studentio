@@ -96,12 +96,44 @@ export const colleges = [
   "M.S. University - Faculty of Management Studies",
   "M.S. University - Faculty of Fine Arts",
 
+  // Sankalchand Patel University (SPU)
+"Sankalchand Patel University (SPU), Visnagar",
+"Sankalchand Patel University - Faculty of Engineering & Technology",
+"Sankalchand Patel University - Faculty of Dental Science",
+"Sankalchand Patel University - Faculty of Pharmacy",
+"Sankalchand Patel University - Faculty of Management Studies",
+"Sankalchand Patel University - Faculty of Nursing",
+"Sankalchand Patel University - Faculty of Physiotherapy",
+"Sankalchand Patel University - Faculty of Science",
+"Sankalchand Patel University - Faculty of Commerce",
+"Sankalchand Patel University - Faculty of Arts",
+"Sankalchand Patel University - Faculty of Computer Applications",
+"Sankalchand Patel University - Faculty of Paramedical Sciences",
+
+
+// Smt. S. R. Patel Engineering College, Unjha
+"Smt. S. R. Patel Engineering College, Unjha",
+"Smt. S. R. Patel Engineering College - Department of Computer Engineering",
+"Smt. S. R. Patel Engineering College - Department of Civil Engineering",
+"Smt. S. R. Patel Engineering College - Department of Mechanical Engineering",
+"Smt. S. R. Patel Engineering College - Department of Electrical Engineering",
+"Smt. S. R. Patel Engineering College - Department of Electronics & Communication Engineering",
+"Smt. S. R. Patel Engineering College - Department of Artificial Intelligence & Data Science",
+"Smt. S. R. Patel Engineering College - Department of Information Technology",
+"Smt. S. R. Patel Engineering College - Department of Applied Sciences & Humanities",
+
+
+
   // Sardar Vallabhbhai National Institute of Technology
   "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
   "SVNIT - Department of Civil Engineering",
   "SVNIT - Department of Computer Engineering",
   "SVNIT - Department of Electrical Engineering",
   "SVNIT - Department of Mechanical Engineering",
+
+
+
+
 
   // Agricultural Universities
   "Junagadh Agricultural University",
