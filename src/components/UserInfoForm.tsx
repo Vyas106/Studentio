@@ -783,9 +783,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { motion } from "framer-motion";
 import { 
   AtSign, Briefcase, BookOpen, User, Hash, FileText, Github, 
-  Linkedin, Twitter, Camera, ArrowLeft, ArrowRight, Check,
+  Linkedin, Twitter, ArrowLeft, ArrowRight, Check,
   CheckCircle, Plus, X,  GraduationCap
 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+// Make sure to import the colleges, courses, and semesters arrays
+import { colleges } from "../../utils/colleges";
+import { courses } from '../../utils/courses';
+import { semesters } from '../../utils/semesters';
 
 export default function UserInfoForm() {
   const [form, setForm] = useState<Partial<UserProfile>>({
@@ -810,6 +815,14 @@ export default function UserInfoForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
   const router = useRouter();
+
+  const handleSelectChange = (name: string, value: string) => {
+    setForm({
+      ...form,
+      [name]: value
+    });
+  };
+
 
   useEffect(() => {
     // Check if user is authenticated
@@ -1094,19 +1107,10 @@ export default function UserInfoForm() {
                       </AvatarFallback>
                     </Avatar>
                     
-                    {/* <label htmlFor="photo-upload" className="absolute bottom-0 right-0 bg-blue-500 text-white p-1.5 rounded-full cursor-pointer shadow-md hover:bg-blue-600 transition-colors">
-                      <Camera className="h-4 w-4" />
-                    </label> */}
                     
-                    <Input
-                      id="photo-upload"
-                      type="file"
-                      accept="image/*"
-                      onChange={handlePhotoChange}
-                      className="hidden"
-                    />
+                    
                   </div>
-                  <p className="text-xs text-gray-500">Upload a professional photo</p>
+                  
                 </div>
                 
                 {/* Name Field */}
@@ -1115,7 +1119,7 @@ export default function UserInfoForm() {
                   <Input
                     id="name"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Name"
                     value={form.name}
                     onChange={handleChange}
                     className={`border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.name ? "border-red-500" : ""}`}
@@ -1135,7 +1139,7 @@ export default function UserInfoForm() {
                     <Input
                       id="enrollment"
                       name="enrollment"
-                      placeholder="EN12345678"
+                      placeholder="EN123456789"
                       value={form.enrollment}
                       onChange={handleChange}
                       className={`pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.enrollment ? "border-red-500" : ""}`}
@@ -1166,84 +1170,104 @@ export default function UserInfoForm() {
             )}
 
             {/* Step 2: Academic Information */}
-            {currentStep === 2 && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
-                {/* College Field */}
-                <div className="space-y-2">
-                  <Label htmlFor="college" className="text-gray-700 font-medium">
-                    College/University *
-                  </Label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <GraduationCap className="h-4 w-4 text-gray-500" />
-                    </div>
-                    <Input
-                      id="college"
-                      name="college"
-                      placeholder="University of Technology"
-                      value={form.college}
-                      onChange={handleChange}
-                      className={`pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.college ? "border-red-500" : ""}`}
-                    />
-                  </div>
-                  {errors.college && (
-                    <p className="text-red-500 text-xs mt-1">{errors.college}</p>
-                  )}
-                </div>
+{currentStep === 2 && (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}
+    className="space-y-6"
+  >
+    {/* College Field */}
+    <div className="space-y-2">
+      <Label htmlFor="college" className="text-gray-700 font-medium">
+        College/University *
+      </Label>
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <GraduationCap className="h-4 w-4 text-gray-500" />
+        </div>
+        <Select
+          value={form.college}
+          onValueChange={(value) => handleSelectChange("college", value)}
+        >
+          <SelectTrigger className={`pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.college ? "border-red-500" : ""}`}>
+            <SelectValue placeholder="Select a college/university" />
+          </SelectTrigger>
+          <SelectContent>
+            {colleges.map((college) => (
+              <SelectItem key={college} value={college}>
+                {college}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      {errors.college && (
+        <p className="text-red-500 text-xs mt-1">{errors.college}</p>
+      )}
+    </div>
 
-                {/* Course Field */}
-                <div className="space-y-2">
-                  <Label htmlFor="course" className="text-gray-700 font-medium">Course / Department *</Label>
-                  <Input
-                    id="course"
-                    name="course"
-                    placeholder="Computer Science and Engineering"
-                    value={form.course}
-                    onChange={handleChange}
-                    className={`border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.course ? "border-red-500" : ""}`}
-                  />
-                  {errors.course && (
-                    <p className="text-red-500 text-xs mt-1">{errors.course}</p>
-                  )}
-                </div>
+    {/* Course Field */}
+    <div className="space-y-2">
+      <Label htmlFor="course" className="text-gray-700 font-medium">Course / Department *</Label>
+      <Select
+        value={form.course}
+        onValueChange={(value) => handleSelectChange("course", value)}
+      >
+        <SelectTrigger className={`border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.course ? "border-red-500" : ""}`}>
+          <SelectValue placeholder="Select a course/department" />
+        </SelectTrigger>
+        <SelectContent>
+          {courses.map((course) => (
+            <SelectItem key={course} value={course}>
+              {course}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {errors.course && (
+        <p className="text-red-500 text-xs mt-1">{errors.course}</p>
+      )}
+    </div>
 
-                {/* Semester Field */}
-                <div className="space-y-2">
-                  <Label htmlFor="semester" className="text-gray-700 font-medium">Current Semester *</Label>
-                  <Input
-                    id="semester"
-                    name="semester"
-                    placeholder="3rd Semester"
-                    value={form.semester}
-                    onChange={handleChange}
-                    className={`border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.semester ? "border-red-500" : ""}`}
-                  />
-                  {errors.semester && (
-                    <p className="text-red-500 text-xs mt-1">{errors.semester}</p>
-                  )}
-                </div>
+    {/* Semester Field */}
+    <div className="space-y-2">
+      <Label htmlFor="semester" className="text-gray-700 font-medium">Current Semester *</Label>
+      <Select
+        value={form.semester}
+        onValueChange={(value) => handleSelectChange("semester", value)}
+      >
+        <SelectTrigger className={`border-gray-300 focus:border-blue-500 focus:ring-blue-500 ${errors.semester ? "border-red-500" : ""}`}>
+          <SelectValue placeholder="Select a semester" />
+        </SelectTrigger>
+        <SelectContent>
+          {semesters.map((semester) => (
+            <SelectItem key={semester} value={semester}>
+              {semester}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {errors.semester && (
+        <p className="text-red-500 text-xs mt-1">{errors.semester}</p>
+      )}
+    </div>
 
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 text-blue-600">
-                      <BookOpen className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-blue-800">Why this matters</h4>
-                      <p className="text-xs text-blue-700 mt-1">
-                        Your educational background helps connect you with classmates and alumni from your institution.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
+    <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+      <div className="flex items-start gap-3">
+        <div className="mt-1 text-blue-600">
+          <BookOpen className="h-5 w-5" />
+        </div>
+        <div>
+          <h4 className="text-sm font-medium text-blue-800">Why this matters</h4>
+          <p className="text-xs text-blue-700 mt-1">
+            Your educational background helps connect you with classmates and alumni from your institution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+)}
             {/* Step 3: Skills */}
             {currentStep === 3 && (
               <motion.div
@@ -1349,7 +1373,7 @@ export default function UserInfoForm() {
                   <div className="space-y-2">
                     <Label htmlFor="linkedin" className="text-gray-700 font-medium flex items-center gap-2">
                       <Linkedin className="h-5 w-5 text-blue-700" />
-                      LinkedIn Profile
+                      LinkedIn Profile(optional)
                     </Label>
                     <Input
                       id="linkedin"
@@ -1367,7 +1391,7 @@ export default function UserInfoForm() {
                   <div className="space-y-2">
                     <Label htmlFor="github" className="text-gray-700 font-medium flex items-center gap-2">
                       <Github className="h-5 w-5 text-gray-900" />
-                      GitHub Profile
+                      GitHub Profile(optional)
                     </Label>
                     <Input
                       id="github"
@@ -1385,7 +1409,7 @@ export default function UserInfoForm() {
                   <div className="space-y-2">
                     <Label htmlFor="twitter" className="text-gray-700 font-medium flex items-center gap-2">
                       <Twitter className="h-5 w-5 text-blue-500" />
-                      Twitter Profile
+                      Twitter Profile(optional)
                     </Label>
                     <Input
                       id="twitter"
