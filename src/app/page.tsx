@@ -497,7 +497,7 @@ useEffect(() => {
       <header className="px-5 md:px-10 pt-6 md:pt-8 text-black">
         
           <h1 className="text-3xl md:text-4xl font-bold font-poppins bg-clip-text  text-black">
-            StudentLab
+            Student.io
           </h1>
      
       </header>
