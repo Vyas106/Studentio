@@ -124,6 +124,21 @@ export const colleges = [
 
 
 
+// Vishwakarma Government Engineering College (VGEC), Ahmedabad
+"Vishwakarma Government Engineering College (VGEC), Ahmedabad",
+"VGEC - Department of Computer Engineering",
+"VGEC - Department of Information Technology",
+"VGEC - Department of Civil Engineering",
+"VGEC - Department of Mechanical Engineering",
+"VGEC - Department of Electrical Engineering",
+"VGEC - Department of Electronics & Communication Engineering",
+"VGEC - Department of Instrumentation & Control Engineering",
+"VGEC - Department of Chemical Engineering",
+"VGEC - Department of Automobile Engineering",
+"VGEC - Department of Applied Sciences & Humanities",
+
+
+
   // Sardar Vallabhbhai National Institute of Technology
   "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
   "SVNIT - Department of Civil Engineering",
