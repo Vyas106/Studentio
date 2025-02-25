@@ -133,7 +133,7 @@ export default function ExplorePage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="container max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent text-black">
+          <h1 className="text-4xl font-bold bg-clip-text text-black">
             Explore Projects
           </h1>
           <Button
